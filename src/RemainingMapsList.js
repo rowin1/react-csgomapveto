@@ -17,7 +17,7 @@ class RemainingMapsList extends Component {
         return null;
       }
     }
-  )
+  );
 
     return (
       <div className='ui centered cards'>
