@@ -14,21 +14,6 @@ class MapVeto extends Component {
     maps: MAPS,
   }
 
-  getTurnOrder() {
-    if (this.props.bestOf === 'one') {
-      return ['ban', 'ban', 'ban', 'ban', 'ban', 'ban', 'auto'];
-    }
-    else if (this.props.bestOf === 'five') {
-      return ['ban', 'ban', 'pick', 'pick', 'pick', 'pick', 'auto'];
-    }
-    else if (this.props.bestOf === 'three') {
-      return ['ban', 'ban', 'pick', 'pick', 'ban', 'ban', 'auto'];
-    }
-    else {
-      return ['ban', 'ban', 'pick', 'pick', 'ban', 'ban', 'auto'];
-    }
-  }
-
   getNextWhosTurn() {
     if (this.state.whosTurn === "Team A's") {
       return "Team B's";
@@ -48,7 +33,7 @@ class MapVeto extends Component {
   }
 
   handleMapClick = (i) => {
-    const turns = this.getTurnOrder(this.props.bestOf);
+    const turns = this.props.turnOrder;
     const choice = turns[this.state.turnNumber];
     if (this.mapsRemaining() > 2) {
       if (choice === 'ban') {
@@ -142,7 +127,7 @@ class MapVeto extends Component {
 
 
   render() {
-    const turns = this.getTurnOrder();
+    const turns = this.props.turnOrder;
     const choice = turns[this.state.turnNumber];
     const done = (0 === this.mapsRemaining());
 

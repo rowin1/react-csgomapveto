@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 
+import MODES from './modes';
 import ModeChoice from './ModeChoice';
 
 class ModeSelect extends Component {
 
   render() {
-    const modechoiceComponents = this.props.modes.map((mode) => {
+    const modechoiceComponents = MODES.map((mode) => {
       return (
           <ModeChoice
             name={mode.name}
             image={mode.image}
-            onClick={() => this.props.onClick(mode.name)}
+            onClick={() => this.props.onClick(mode)}
           />
         );
       }
